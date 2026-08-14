@@ -57,6 +57,10 @@ function initSupabase(){
 
 function showScreen(id){
   screens.forEach(s => $(s).classList.toggle("active", s === id));
+
+  // PLAY中だけ横向き最適化CSSを有効にする
+  document.body.classList.toggle("playing-mode", id === "playScreen");
+
   window.scrollTo({top:0, behavior:"instant"});
 }
 
