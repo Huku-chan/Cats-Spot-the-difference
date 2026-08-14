@@ -1,4 +1,4 @@
-const CACHE="cat-time-attack-v5";
+const CACHE="cat-time-attack-v6";
 const LOCAL=[
   "./","./index.html","./styles.css","./app.js","./config.js",
   "./cats.js","./manifest.webmanifest"

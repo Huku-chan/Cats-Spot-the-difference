@@ -327,3 +327,94 @@ body.playing-mode{
     margin:0;
   }
 }
+
+
+/* =========================================================
+   v5: 縦横比を完全固定
+   横幅・高さを別々に縮めず、全体を一定倍率で拡大縮小する
+   canvas = 400 x 500 → aspect-ratio 4 / 5
+   ========================================================= */
+
+@media (orientation:landscape) and (max-height:650px){
+
+  body.playing-mode .images{
+    display:grid;
+    grid-template-columns:auto auto;
+    justify-content:center;
+    align-items:center;
+    column-gap:10px;
+  }
+
+  body.playing-mode .image-panel{
+    width:auto;
+    height:auto;
+    min-width:0;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  body.playing-mode .canvas-wrap{
+    /*
+      幅を先に1つだけ決める。
+      40vw           : 横画面に2枚収めるため
+      54svh          : 高さから逆算した上限
+      360px          : 大きくなりすぎ防止
+
+      その幅から height は aspect-ratio で自動計算されるので、
+      縦だけ・横だけが縮むことはない。
+    */
+    width:min(40vw, 54svh, 360px);
+    height:auto;
+    max-width:none;
+    max-height:none;
+    aspect-ratio:4 / 5;
+    margin:0;
+    flex:none;
+  }
+
+  body.playing-mode .canvas-wrap canvas{
+    display:block;
+    width:100%;
+    height:auto;      /* ← 重要：縦横比を崩さない */
+    aspect-ratio:4 / 5;
+    object-fit:contain;
+  }
+}
+
+
+/* 横向きで高さに余裕がある端末 */
+@media (orientation:landscape) and (min-height:651px) and (max-width:1100px){
+
+  body.playing-mode .images{
+    display:grid;
+    grid-template-columns:auto auto;
+    justify-content:center;
+    align-items:center;
+    column-gap:14px;
+  }
+
+  body.playing-mode .image-panel{
+    width:auto;
+    height:auto;
+  }
+
+  body.playing-mode .canvas-wrap{
+    width:min(40vw, 56svh, 400px);
+    height:auto;
+    max-width:none;
+    max-height:none;
+    aspect-ratio:4 / 5;
+    margin:0;
+  }
+
+  body.playing-mode .canvas-wrap canvas{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:4 / 5;
+    object-fit:contain;
+  }
+}
