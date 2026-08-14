@@ -248,3 +248,82 @@ body.playing-mode{
     max-width:min(40vw,430px);
   }
 }
+
+
+/* =========================================================
+   v4: 横向き時の2枚を中央に寄せる
+   ========================================================= */
+@media (orientation:landscape) and (max-height:650px){
+
+  body.playing-mode .images{
+    flex:1 1 auto;
+    min-height:0;
+
+    /* 2枚を画面いっぱいに広げず、中央にまとめる */
+    display:grid;
+    grid-template-columns:auto auto;
+    justify-content:center;
+    align-items:center;
+
+    /* 写真同士の隙間 */
+    column-gap:10px;
+
+    overflow:hidden;
+  }
+
+  body.playing-mode .image-panel{
+    min-width:0;
+    min-height:0;
+
+    width:auto;
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  body.playing-mode .canvas-wrap{
+    flex:0 1 auto;
+
+    /* 横幅を画面の約40%以内に制限 */
+    width:min(40vw, 360px);
+    max-width:360px;
+
+    /* 高さ側でも画面に収める */
+    height:auto;
+    max-height:70svh;
+
+    aspect-ratio:4 / 5;
+    margin:0;
+  }
+
+  body.playing-mode .canvas-wrap canvas{
+    display:block;
+    width:100%;
+    height:100%;
+  }
+}
+
+/* 少し背の高い横向き端末でも同様に中央寄せ */
+@media (orientation:landscape) and (min-height:651px) and (max-width:1100px){
+
+  body.playing-mode .images{
+    display:grid;
+    grid-template-columns:auto auto;
+    justify-content:center;
+    align-items:center;
+    column-gap:14px;
+  }
+
+  body.playing-mode .image-panel{
+    width:auto;
+  }
+
+  body.playing-mode .canvas-wrap{
+    width:min(40vw, 400px);
+    max-width:400px;
+    margin:0;
+  }
+}
