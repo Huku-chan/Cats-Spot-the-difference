@@ -1,0 +1,9 @@
+{
+  "name": "猫の汚れ落とし CAT TIME ATTACK",
+  "short_name": "猫タイムアタック",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8fbff",
+  "theme_color": "#dff1ff"
+}
